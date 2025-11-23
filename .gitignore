@@ -1,0 +1,20 @@
+# Environnement virtuel
+.venv/
+venv/
+
+# Fichiers Python compilés
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Fichiers temporaires / logs
+*.log
+*.tmp
+
+# Fichiers générés
+data/processed/
+*.csv
+
+# VS Code
+.vscode/
