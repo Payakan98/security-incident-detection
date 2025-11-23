@@ -1,104 +1,98 @@
-\# Détection d’incidents de sécurité avec IA
+\# Détection d’Incidents de Sécurité avec IA
+
+
+
+!\[Security AI](https://img.shields.io/badge/Status-Prototype-blue) !\[Python](https://img.shields.io/badge/Python-3.13-green) !\[License](https://img.shields.io/badge/License-MIT-yellow)
 
 
 
 \## Description
 
-Prototype en Python pour analyser automatiquement les logs réseau, emails et alertes de sécurité (IDS/IPS, antivirus) afin de détecter et prioriser les incidents critiques.
+Ce projet propose un \*\*prototype d’analyse automatique de logs et alertes de sécurité\*\* (réseau, IDS/IPS, emails) basé sur l’\*\*intelligence artificielle\*\*. Il permet de détecter des anomalies, de classifier les incidents et de visualiser les menaces critiques dans un tableau de bord interactif.
+
+
+
+Le projet est conçu pour :  
+
+\- Réduire les faux positifs dans les alertes de sécurité.  
+
+\- Prioriser les incidents critiques pour un traitement rapide.  
+
+\- Fournir une interface intuitive pour explorer et analyser les événements.
+
+
+
+---
 
 
 
 \## Fonctionnalités
 
-\- Ingestion et normalisation des fichiers PCAP, JSON (IDS/IPS) et CSV (emails)
+\- \*\*Ingestion de données hétérogènes\*\* : PCAP, logs JSON IDS/IPS, alertes emails.  
 
-\- Détection d’anomalies et classification des incidents avec scikit-learn
+\- \*\*Analyse et détection d’anomalies\*\* avec Python et scikit-learn.  
 
-\- Visualisation des incidents via un tableau de bord interactif (Dash / Plotly)
+\- \*\*Classification automatique des incidents\*\* pour hiérarchiser les menaces.  
 
-\- Réduction des faux positifs et priorisation des menaces
+\- \*\*Tableau de bord interactif\*\* avec Dash et Plotly pour visualiser les incidents.  
 
-
-
-\## Structure du projet
-
-Detection\_AI/
-
-│
-
-├─ data/
-
-│ ├─ raw/ # Fichiers bruts (PCAP, eve.json, emails.csv)
-
-│ └─ processed/ # Fichiers transformés
-
-│
-
-├─ src/
-
-│ ├─ ingest.py # Script d’ingestion des données
-
-│ ├─ dashboard.py # Tableau de bord interactif
-
-│ └─ generate\_pcap.py # Script d’exemple pour générer des PCAP
-
-│
-
-├─ .gitignore
-
-├─ README.md
-
-└─ requirements.txt
+\- \*\*Extensible et modulaire\*\* : facile d’ajouter de nouvelles sources ou modèles IA.  
 
 
 
-
-
-\## Installation
-
-1\. Cloner le dépôt :
-
-```bash
-
-git clone https://github.com/Payakan98/security-incident-detection.git
-
-cd Detection\_AI
+---
 
 
 
-2.Créer un environnement virtuel et installer les dépendances :
+\## Installation \& Usage
 
 
 
-python -m venv .venv
+1\. \*\*Préparer l’environnement\*\*  
 
-source .venv/bin/activate    # Linux/macOS
+&nbsp;  Crée un environnement virtuel et installe les dépendances :
 
-.venv\\Scripts\\activate       # Windows
+&nbsp;  ```bash
 
-pip install -r requirements.txt
+&nbsp;  python -m venv .venv
 
+&nbsp;  source .venv/bin/activate   # Linux / Mac
 
+&nbsp;  .venv\\Scripts\\activate      # Windows
 
-Usage
-
-
-
-Mettre tes fichiers dans data/raw/ : capture.pcap, eve.json, emails.csv
+&nbsp;  pip install -r requirements.txt
 
 
 
-Exécuter l’ingestion :
+2.Préparer les fichiers d’entrée
+
+&nbsp; Place tes fichiers dans data/raw/ :
 
 
 
-python src/ingest.py
+* capture.pcap : capture réseau
+* eve.json : logs IDS/IPS
+* emails.csv : alertes emails
 
 
 
+&nbsp;   Optionnel : générer des fichiers d’exemple pour tester :
+
+&nbsp;      python src/generate\_sample\_data.py
 
 
-Lancer le tableau de bord :
+
+3.Exécuter l’ingestion des données
+
+&nbsp; Transforme les fichiers bruts en tables structurées :
+
+&nbsp;    python src/ingest.py
+
+
+
+4.Lancer le tableau de bord
+
+Visualise et analyse les incidents détectés :
 
 
 
@@ -106,27 +100,76 @@ python src/dashboard.py
 
 
 
-Technologies utilisées
+\## Structure du projet
+
+Detection\_AI/
+
+├─ data/
+
+│  ├─ raw/              # Fichiers sources : PCAP, logs IDS, emails
+
+│  └─ processed/        # Données normalisées générées par ingest.py
+
+├─ src/
+
+│  ├─ ingest.py         # Script d’ingestion et normalisation
+
+│  ├─ dashboard.py      # Tableau de bord interactif
+
+│  └─ generate\_sample\_data.py # Génération de fichiers temporaires
+
+├─ .venv/               # Environnement virtuel
+
+├─ requirements.txt     # Dépendances Python
+
+└─ README.md
 
 
 
-Python, Pandas, scikit-learn, Dash, Plotly
+\##Technologies \& Librairies
+
+* Python 3.13
+* Analyse réseau \& logs : Pyshark, pandas
+* Machine Learning / IA : scikit-learn
+* Emails / alertes : mailparser (ou CSV simplifié)
+* Visualisation : Dash, Plotly
+* Versioning \& workflow : Git, GitHub
 
 
 
-Wireshark / Tshark pour l’analyse réseau
+\##Exemples de visualisation
+
+Tableau de bord interactif avec filtre par type d’incident, adresse IP, protocole.
 
 
 
-Environnements Linux / Windows
+Graphiques pour suivre le nombre d’incidents par gravité.
 
 
 
-Auteur
+Timeline des alertes réseau et emails.
 
 
 
-Islem Chokri
+\##Contribution
+
+Les contributions sont les bienvenues !
+
+
+
+Ajouter de nouvelles sources de logs ou alertes.
+
+
+
+Intégrer de nouveaux modèles de détection d’anomalies.
+
+
+
+Améliorer l’interface du tableau de bord.
+
+
+
+\##Auteur: Islem Chokri
 
 
 
