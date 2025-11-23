@@ -6,37 +6,23 @@
 
 
 
-\## Description
-
-Ce projet propose un \*\*prototype d’analyse automatique de logs et alertes de sécurité\*\* (réseau, IDS/IPS, emails) basé sur l’\*\*intelligence artificielle\*\*. Il permet de détecter des anomalies, de classifier les incidents et de visualiser les menaces critiques dans un tableau de bord interactif.
+\## 🔎 Description
 
 
 
-Le projet est conçu pour :  
+Ce projet propose un \*\*prototype de détection d’incidents de sécurité avec intelligence artificielle\*\*.  
 
-\- Réduire les faux positifs dans les alertes de sécurité.  
+Il permet de :  
 
-\- Prioriser les incidents critiques pour un traitement rapide.  
+\- Ingestion et normalisation de fichiers réseau (PCAP), alertes IDS/IPS et emails.  
 
-\- Fournir une interface intuitive pour explorer et analyser les événements.
+\- Détection d’anomalies dans les événements.  
 
-
-
----
+\- Visualisation interactive des incidents via un \*\*tableau de bord Dash\*\*.  
 
 
 
-\## Fonctionnalités
-
-\- \*\*Ingestion de données hétérogènes\*\* : PCAP, logs JSON IDS/IPS, alertes emails.  
-
-\- \*\*Analyse et détection d’anomalies\*\* avec Python et scikit-learn.  
-
-\- \*\*Classification automatique des incidents\*\* pour hiérarchiser les menaces.  
-
-\- \*\*Tableau de bord interactif\*\* avec Dash et Plotly pour visualiser les incidents.  
-
-\- \*\*Extensible et modulaire\*\* : facile d’ajouter de nouvelles sources ou modèles IA.  
+L’objectif est de réduire les faux positifs et de prioriser les menaces critiques pour les analystes SOC.
 
 
 
@@ -44,59 +30,102 @@ Le projet est conçu pour :
 
 
 
-\## Installation \& Usage
+\## ⚙️ Installation
 
 
 
-1\. \*\*Préparer l’environnement\*\*  
+1\. \*\*Cloner le dépôt :\*\*
 
-&nbsp;  Crée un environnement virtuel et installe les dépendances :
+&nbsp;	git clone https://github.com/Payakan98/security-incident-detection.git
 
-&nbsp;  ```bash
-
-&nbsp;  python -m venv .venv
-
-&nbsp;  source .venv/bin/activate   # Linux / Mac
-
-&nbsp;  .venv\\Scripts\\activate      # Windows
-
-&nbsp;  pip install -r requirements.txt
+&nbsp;	cd Detection\_AI
 
 
 
-2.Préparer les fichiers d’entrée
-
-&nbsp; Place tes fichiers dans data/raw/ :
+2.Créer un environnement virtuel et installer les dépendances :
 
 
 
-* capture.pcap : capture réseau
-* eve.json : logs IDS/IPS
-* emails.csv : alertes emails
+&nbsp;	python -m venv .venv
+
+&nbsp;	# Windows
+
+&nbsp;	.venv\\Scripts\\activate
+
+&nbsp;	# Linux / Mac
+
+&nbsp;	source .venv/bin/activate
+
+&nbsp;	pip install -r requirements.txt
 
 
 
-&nbsp;   Optionnel : générer des fichiers d’exemple pour tester :
-
-&nbsp;      python src/generate\_sample\_data.py
+3.Mettre vos fichiers de données dans data/raw/ :
 
 
 
-3.Exécuter l’ingestion des données
-
-&nbsp; Transforme les fichiers bruts en tables structurées :
-
-&nbsp;    python src/ingest.py
+* capture.pcap (traces réseau)
+* eve.json (logs IDS/IPS)
+* emails.csv (alertes emails)
 
 
 
-4.Lancer le tableau de bord
-
-Visualise et analyse les incidents détectés :
+\##Usage
 
 
 
-python src/dashboard.py
+1.Ingestion et préparation des données :
+
+&nbsp;	python src/ingest.py
+
+Cela génère data/processed/events\_with\_anomalies.csv.
+
+
+
+2.Lancer le tableau de bord interactif :
+
+
+
+&nbsp;	python src/dashboard.py
+
+
+
+3.Ouvrir dans votre navigateur sur http://127.0.0.1:8050.
+
+
+
+\##Dashboard interactif
+
+
+
+Le tableau de bord offre :
+
+
+
+* Filtres interactifs : type d’incident, IP source/destination, protocole.
+* Histogrammes pour suivre les incidents par gravité et protocole.
+* Timeline des alertes réseau et emails pour visualiser la chronologie des incidents.
+* Tableau des anomalies avec détails sur chaque événement.
+
+
+
+\##Exemple de visualisation
+
+&nbsp;Par type et status
+
+!\[Capture d'écran 1](assets/nb\_incidents\_type.png)  
+
+
+
+&nbsp;Timeline des incidents
+
+!\[Capture d'écran 2](assets/incidents\_timeline.png)  
+
+
+
+&nbsp;Par gravite
+
+!\[Capture d'écran 3](assets/nb\_incidents\_gravite.png)
 
 
 
@@ -129,25 +158,10 @@ Detection\_AI/
 \##Technologies \& Librairies
 
 * Python 3.13
-* Analyse réseau \& logs : Pyshark, pandas
-* Machine Learning / IA : scikit-learn
-* Emails / alertes : mailparser (ou CSV simplifié)
-* Visualisation : Dash, Plotly
-* Versioning \& workflow : Git, GitHub
-
-
-
-\##Exemples de visualisation
-
-Tableau de bord interactif avec filtre par type d’incident, adresse IP, protocole.
-
-
-
-Graphiques pour suivre le nombre d’incidents par gravité.
-
-
-
-Timeline des alertes réseau et emails.
+* Pandas \& NumPy pour la manipulation de données
+* Dash \& Plotly pour visualisation interactive
+* Scapy / Pyshark pour l’analyse PCAP
+* JSON / CSV pour ingestion des logs
 
 
 
