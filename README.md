@@ -6,7 +6,7 @@
 
 
 
-\## 🔎 Description
+\## Description
 
 
 
@@ -30,7 +30,7 @@ L’objectif est de réduire les faux positifs et de prioriser les menaces criti
 
 
 
-\## ⚙️ Installation
+\## Installation
 
 
 
@@ -165,7 +165,7 @@ Detection\_AI/
 
 
 
-\##Contribution
+\## Contribution
 
 Les contributions sont les bienvenues !
 
@@ -183,7 +183,7 @@ Améliorer l’interface du tableau de bord.
 
 
 
-\##Auteur: Islem Chokri
+\## Auteur: Islem Chokri
 
 
 
